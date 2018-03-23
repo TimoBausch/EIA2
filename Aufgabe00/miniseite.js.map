@@ -1,1 +1,1 @@
-{"version":3,"file":"miniseite.js","sourceRoot":"","sources":["miniseite.ts"],"names":[],"mappings":""}
+{"version":3,"file":"miniseite.js","sourceRoot":"","sources":["miniseite.ts"],"names":[],"mappings":"AAAC;;;;;;;;;EASC;AAEF;IACI,IAAI,IAAI,GAAY,MAAM,CAAC,eAAe,EAAE,EAAE,CAAC,CAAC;IAChD,EAAE,CAAC,CAAC,IAAI,IAAI,IAAI,CAAC,CAAC,CAAC;QACf,QAAQ,CAAC,cAAc,CAAC,WAAW,CAAC,CAAC,SAAS;YAC1C,eAAe,GAAG,IAAI,GAAG,GAAG,CAAC;IACrC,CAAC;AACD,CAAC"}
