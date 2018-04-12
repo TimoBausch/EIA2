@@ -8,57 +8,75 @@ namespace Aufgabe02 {
     
     
    function inputPairs() : number{
-    let pairs : string = prompt("Wie viele Kartenpaare (min5|max10)")
+       
+    let pairs : string = prompt("Wie viele Kartenpaare (min4 & max26)")
     let pairSum : number = parseInt(pairs)
+       
+       
+      
+       console.log("inputPairs")
         
     
        return pairSum;
     }
-    
+       
+   let amount :number =  inputPairs();
    
         
-console.log(infolist.length);
-    console.log(infolist);
-    console.log("Cards:");
+    console.log("Länge Infolist", infolist.length);
+    console.log("Content Infolist", infolist);
     
-    let Sum : number  = pairSum
     
-    function shuffelAray(min:number, max:number,): void {
+    
+    
+    function shuffelAray(x:number): void {
         
-        for (let i: number = 0; i < pairSum; i++) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            var random:number=Math.floor(Math.random() * (max - min +1)) + min; 
-              console.log(random); 
+        for (let i: number = 1; i <= x; i++) {
+             
             
-        var content : string = infolist[random];  
+        var content : string = infolist[0];  
         cardList.push (content);
             cardList.push(content);
              
-            var removed = infolist.splice(random, 1);
-            console.log(infolist);
-            console.log(cardList);
+            var removed = infolist.splice(0, 1);
+            
+            
             
         }
-    
+    console.log("Content CardList", cardList);
    
     
     }
     
     
     
-    function generateCards() : void{
+    function generateCards(y:number) : void{
         var node : any= document.getElementById("spielfeld");
         var childNodeHTML : string;
         var i : number = 0;
-        while (i < cardList.length) {
-            
+        
+        
+        while (i < (y*2)) {
+            let min: number = 0;
+        let max: number = (cardList.length);
+            // min = Math.ceil(min);
+          //  max = Math.floor(max);
+            var random:number=Math.floor(Math.random() * (max - min)) + min; 
+            console.log("Card:" + i);
+              console.log(random); 
+          
             childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
             childNodeHTML += "<p>";
-            childNodeHTML += cardList[i];
+            childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";      
             node.innerHTML += childNodeHTML;
+            console.log("Länge Cardlist nach Generate, " + cardList.length)
+            var content : string = cardList[random];  
+             
+            var removed = cardList.splice(random, 1);
+            console.log(cardList);
+            
             i++;
         }
     }
@@ -66,8 +84,8 @@ console.log(infolist.length);
     
     // Hauptprogramm
     function main () : void {
-        inputPairs();
-         shuffelAray(0,25,);
+        
+         shuffelAray(amount);
         
        
         
@@ -75,7 +93,7 @@ console.log(infolist.length);
         console.log("main");
         
         // Content erzeugen
-         generateCards();
+         generateCards(amount);
         }
     
     

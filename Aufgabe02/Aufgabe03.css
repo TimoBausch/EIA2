@@ -1,0 +1,13 @@
+#spielfeld div{
+	float: left;
+}
+
+.card {
+	height: 3em;
+	width: 3em;
+	background-color: red;
+	margin:1em;
+	text-align: center;
+	
+}
+
