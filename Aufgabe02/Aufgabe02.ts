@@ -5,14 +5,16 @@ namespace Aufgabe02 {
     var infolist: string []=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 //    leeres Array zum Bestücken
     var cardList: string[]=[];
+//    Array mit Klassen
+    var classList: string[]=["hidden", "taken", "visible"];
   
     
 //    Prompt für Eingabe für Kartenpaare 
    function inputPairs() : number{
        
-    let pairs : string = prompt("Wie viele Kartenpaare (min. 4 & max. 26)");
+    let pairs : string = prompt("Wie viele Kartenpaare (min. 5 & max. 26)");
     let pairSum : number = parseInt(pairs);
-       if (isNaN(pairSum) || pairSum < 4 || pairSum > 26) {
+       if (isNaN(pairSum) || pairSum < 5 || pairSum > 26) {
         alert("FALSCH")
         inputPairs();    
     }
@@ -22,7 +24,7 @@ namespace Aufgabe02 {
       
        console.log("inputPairs")
         
-    console.log(pairSum);
+       console.log(pairSum);
        return pairSum;
            
     }
@@ -90,17 +92,21 @@ namespace Aufgabe02 {
             // min = Math.ceil(min);
           //  max = Math.floor(max);
             var random:number=Math.floor(Math.random() * (max - min)) + min; 
+            var classRandom : number= Math.floor(Math.random() * (3 - 0)) + 0;
             console.log("Card:" + i);
               console.log(random); 
           
-            childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
+            childNodeHTML = "<div  class='card' class='"; 
+            childNodeHTML += classList[classRandom];
+            childNodeHTML += "' id='Karte" + i + "'>";
             childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";      
             node.innerHTML += childNodeHTML;
             console.log("Länge Cardlist nach Generate, " + cardList.length)
-            var content : string = cardList[random];  
+            var content : string = cardList[random]; 
+            console.log ("classRandom: " + classRandom + ", " + classList[classRandom]);
              
             var removed = cardList.splice(random, 1);
             console.log(cardList);
