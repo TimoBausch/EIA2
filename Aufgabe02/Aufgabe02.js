@@ -59,10 +59,12 @@ var Aufgabe02;
             // min = Math.ceil(min);
             //  max = Math.floor(max);
             var random = Math.floor(Math.random() * (max - min)) + min;
+            //            zufälliger Index für classList
             var classRandom = Math.floor(Math.random() * (3 - 0)) + 0;
             console.log("Card:" + i);
             console.log(random);
             childNodeHTML = "<div  class='card' class='";
+            //            zufällige Klasseneinteilung funktioniert nicht, daher zur Ansicht Simulierung eines Spielverlaufs über Karten-ID
             childNodeHTML += classList[classRandom];
             childNodeHTML += "' id='Karte" + i + "'>";
             childNodeHTML += "<p>";
