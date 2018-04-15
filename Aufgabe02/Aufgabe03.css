@@ -3,11 +3,36 @@
 }
 
 .card {
-	height: 3em;
-	width: 3em;
-	background-color: red;
-	margin:1em;
+	
+	width: 11.5%;
+	background-color: black;
+	padding: auto;
+	margin:0.5%;
 	text-align: center;
+	color:white;
 	
 }
 
+footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	
+	color: white;
+	background-color: black;
+	
+}
+
+footer div{
+	float: left;
+	width: 21%;
+	text-align: center;
+	padding: 2%;
+	}
+	
+footer div p {
+	font-size: 2em;
+	text-align: center;
+	
+}
