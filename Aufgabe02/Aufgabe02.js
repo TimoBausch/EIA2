@@ -88,7 +88,7 @@ var Aufgabe02;
             childNodeHTML = "<div  class='player' id='Spieler" + i + "'>";
             childNodeHTML += "Spieler " + (i + 1);
             childNodeHTML += "<p>";
-            childNodeHTML += "13 ";
+            childNodeHTML += "0";
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
