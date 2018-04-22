@@ -1,0 +1,80 @@
+html{
+	min-height: 100%;
+}
+body {
+	font-family:"arial", sans serif;
+	background-color: dimgrey;
+	
+	
+}
+#spielfeld {
+	height: 80%;
+}
+
+#spielfeld div{
+	float: left;
+	
+}
+
+.card {
+	border-radius: 0.2em;
+	width: 4em;
+	height: 4em;
+	background-color: silver;
+	font-size: 2em;
+	margin:0.2em;
+	text-align: center;
+	vertical-align: middle;
+	color:white;
+	
+}
+.card p{display: none;}
+
+.hidden p{
+	display: none;
+}
+.open {
+	background-color: yellow;
+	
+}
+.open p{
+	display: initial;
+	color: dimgrey;
+}
+
+.taken {
+	background-color:dimgrey;
+	width: 3.8em;
+	height:3.8em;
+	border: 0.1em dotted grey;
+} 
+
+
+
+.visible {
+	background-color: silver;
+}
+
+footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	height: 20%;
+	color: white;
+	background-color: grey;
+	
+}
+
+footer div{
+	float: left;
+	width: 21%;
+	text-align: center;
+	padding: 2%;
+	}
+	
+footer div p {
+	font-size: 2em;
+	text-align: center;
+	
+}
