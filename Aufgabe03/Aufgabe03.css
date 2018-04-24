@@ -16,7 +16,7 @@ body {
 	
 }
 
-.card {
+.hidden{
 	border-radius: 0.2em;
 	width: 4em;
 	height: 4em;
@@ -28,13 +28,20 @@ body {
 	color:white;
 	
 }
-.card p{display: none;}
-
 .hidden p{
 	display: none;
-}
+	}
+
+
 .open {
 	background-color: yellow;
+	border-radius: 0.2em;
+	width: 4em;
+	height: 4em;
+	font-size: 2em;
+	margin:0.2em;
+	text-align: center;
+	vertical-align: middle;
 	
 }
 .open p{
@@ -44,10 +51,18 @@ body {
 
 .taken {
 	background-color:dimgrey;
-	width: 3.8em;
-	height:3.8em;
-	border: 0.1em dotted grey;
+	border-radius: 0.2em;
+	width: 4em;
+	height:4em;
+	
+	font-size: 2em;
+	margin:0.2em;
+	text-align: center;
+	vertical-align: middle;
 } 
+.taken p {
+	display: none;
+}
 
 
 

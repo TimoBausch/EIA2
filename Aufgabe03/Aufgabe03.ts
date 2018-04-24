@@ -14,6 +14,8 @@ namespace Aufgabe02 {
 //    Player Score der am anfang auf 0 gesetzt ist
     let score:number=0;
     
+    let greetNumber : number = 0;
+    
     
     
     
@@ -101,20 +103,17 @@ namespace Aufgabe02 {
             // min = Math.ceil(min);
           //  max = Math.floor(max);
             var random:number=Math.floor(Math.random() * (max - min)) + min; 
-//            zufälliger Index für classList
-            var classRandom : number= Math.floor(Math.random() * (3 - 0)) + 0;
             console.log("Card:" + i);
               console.log(random); 
           
-            childNodeHTML = "<div  class='card' class='hidden' id='Karte" + i + "'>";
+            childNodeHTML = "<div class='hidden' id='Karte" + i + "'>";
             childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";      
             node.innerHTML += childNodeHTML;
             console.log("Länge Cardlist nach Generate, " + cardList.length)
-            var content : string = cardList[random]; 
-            console.log ("classRandom: " + classRandom + ", " + classList[classRandom]);
+            
              
             var removed = cardList.splice(random, 1);
             console.log(cardList);
@@ -132,25 +131,30 @@ namespace Aufgabe02 {
            
             
        function clickHandler(_event: MouseEvent): void {
-           console.log(_event.target);
            let x : HTMLElement = <HTMLElement>_event.target;
-           console.log(x.innerHTML);
 
-           if (x.classList.contains("card")) {  
+           if (x.classList.contains("hidden")) {  
+               x.classList.remove("hidden"); //hier war Fehler wegen Doppelklick, Class hidden wurde zuvor nicht entfernt
                x.classList.add("open");                   
-        openCards ++;                                                           
-            
+               openCards ++;
+           }
+        
+                 
+          
 
         if (openCards == 2) {                                                  
-            setTimeout(compareCards, 2000);                                    
+            setTimeout(compareCards, 1000);                                    
         }
 
         if (openCards > 2) {                                                    
             x.classList.remove("open");
             x.classList.add("hidden");
         }
-    }
-       }    
+           
+        if (x.classList.contains("open")) {
+            }
+    
+       }  
            
       
            
@@ -175,13 +179,18 @@ namespace Aufgabe02 {
              score ++;
              console.log("Karetnpaaar abeglegt");
              
+             greetNumber ++;
+             console.log(greetNumber);
+             
             
         
     }else {
-             card1.classList.remove("open"); 
+             card1.classList.remove("open");
+             card1.classList.add("hidden"); 
              
              
              card2.classList.remove("open"); 
+             card2.classList.add("hidden"); 
              
              }
 //        openCards Variabel wieder auf 0 setzen 
@@ -191,10 +200,22 @@ namespace Aufgabe02 {
 //       HTML von Score verändern um Player Score mitzuzählne
         let playerScore : string = score.toString();
         document.getElementById('Punktestand').innerHTML = playerScore;
+        congrats();
+        
+        
+        
+        
         
          
         }
-            
+         function congrats() : void{
+             if (greetNumber == amount){
+                 alert("Glückwunsch!");}
+           
+        
+        
+    }
+
     
     function generatePlayers() : void{
         var node : any= document.getElementById("Spielerbereich");
