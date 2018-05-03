@@ -1,3 +1,4 @@
+namespace Aufgabe01{
 document.addEventListener("DOMContentLoaded", init);
 
 function init(): void {
@@ -43,3 +44,4 @@ function init(): void {
         s.top = _y + "px";
     }
 }
+    }

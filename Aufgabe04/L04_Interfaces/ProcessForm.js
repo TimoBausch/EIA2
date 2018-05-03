@@ -45,23 +45,26 @@ var L04_Interfaces;
         }
     }
     function search(_event) {
-        console.log("I Bims");
+        let n = 0;
         let output = document.getElementsByTagName("textarea")[1];
         let mNumb = document.getElementById("mtrNumber");
         output.value = "";
         for (let matrikel in L04_Interfaces.studiHomoAssoc) {
             let studi = L04_Interfaces.studiHomoAssoc[matrikel];
             let line = matrikel + ": ";
+            let lengthstudiHomoAssoc = L04_Interfaces.studiSimpleArray.length;
             if (mNumb.value == studi.matrikel.toString()) {
-                console.log("LOOOOOOOOOOL");
                 line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
                 line += studi.gender ? "(M)" : "(F)";
                 output.value += line + "\n";
             }
-            else {
-                let info = "kein Student vorhanden";
+            else if ((lengthstudiHomoAssoc - 1) == n) {
+                let info = "Kein Student unter dieser Matrikelnummer vorhanden.";
                 output.value += info + "\n";
-                console.log("NOBODY is here");
+                n = 0;
+            }
+            else {
+                n++;
             }
         }
     }

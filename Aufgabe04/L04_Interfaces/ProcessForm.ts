@@ -51,7 +51,7 @@ namespace L04_Interfaces {
         }
         
       function search(_event: Event): void{
-          console.log("I Bims");
+         let n: number = 0;
          let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
          let mNumb: HTMLInputElement = <HTMLInputElement>document.getElementById("mtrNumber");
          output.value = "";
@@ -59,9 +59,10 @@ namespace L04_Interfaces {
           for (let matrikel in studiHomoAssoc) {
               let studi: Studi = studiHomoAssoc[matrikel];
               let line: string = matrikel + ": ";
+              let lengthstudiHomoAssoc: number = studiSimpleArray.length;
               
               if(mNumb.value == studi.matrikel.toString()){
-                console.log("LOOOOOOOOOOL");
+                
             
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? "(M)" : "(F)";
@@ -69,13 +70,19 @@ namespace L04_Interfaces {
 
 
           
-          }else {
-          let info : string =  "kein Student vorhanden";
-           output.value += info + "\n";
-                  console.log ("NOBODY is here");
-          }
+          } else if ((lengthstudiHomoAssoc - 1) == n) {             
+                let info: string = "Kein Student unter dieser Matrikelnummer vorhanden.";
+                output.value += info + "\n";
+                n = 0;
+
+            }
+
+            else {
+                n++;
+            }
               }
           }
+          
 
         // zusätzliche Konsolenausgaben zur Demonstration
         console.group("Simple Array");

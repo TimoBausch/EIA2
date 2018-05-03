@@ -84,7 +84,7 @@ namespace Aufgabe04 {
 
         }
         console.log("Anzahl Player: " + players);
-    }
+    } 
 
 
 
