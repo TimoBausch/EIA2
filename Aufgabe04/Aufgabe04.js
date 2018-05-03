@@ -1,11 +1,11 @@
-var Aufgabe02;
-(function (Aufgabe02) {
+var Aufgabe04;
+(function (Aufgabe04) {
     //    Array mit Content 
-    var Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    let Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     //    leeres Array zum Bestücken
-    var cardList = [];
+    let cardList = [];
     //    Array zum Vegleichen von 2 Karten
-    var openList = [];
+    let openList = [];
     //    Variable dass nur 2 karten offen sein können 
     let openCards = 0;
     //    Player Score der am anfang auf 0 gesetzt ist
@@ -15,19 +15,36 @@ var Aufgabe02;
     // Add EventListener 
     document.addEventListener('DOMContentLoaded', init);
     function init(_event) {
-        let insertButton = document.getElementById("start");
-        insertButton.addEventListener("click", start);
+        console.log(Aufgabe04.animalsContent);
+        console.log(Aufgabe04.decks);
+        let insertButton = document.getElementById("insert");
+        insertButton.addEventListener("click", insertAmount);
+        let startButton = document.getElementById("start");
+        startButton.addEventListener("click", start);
     }
     // Hauptprogramm
+    function insertAmount() {
+        console.log("BIATCH");
+        let node = document.getElementById("AmountDiv");
+        let childNodeHTML;
+        let select = document.getElementById("select");
+        let selectedArray = select.value;
+        childNodeHTML = "<input  type='number' name='player' placeholder='how many Cards?' min='1'max='" + Aufgabe04.decks[selectedArray].content.length + "' />";
+        node.innerHTML += childNodeHTML;
+    }
     function start() {
+        let header = document.getElementsByTagName("header");
+        header[0].classList.add("hiddenheader");
         generatePlayers();
         inputCardList();
         generateCards();
     }
     function generatePlayers() {
         let players = parseInt(inputs[0].value);
-        var node = document.getElementById("Spielerbereich");
-        var childNodeHTML;
+        let select = document.getElementById("select");
+        let selectedArray = select.value;
+        let node = document.getElementById("Spielerbereich");
+        let childNodeHTML;
         for (let i = 0; i < players; i++) {
             let playerName = (inputs[i + 1].value);
             console.log(playerName);
@@ -41,42 +58,46 @@ var Aufgabe02;
         }
         console.log("Anzahl Player: " + players);
     }
-    //    Content verdoppeln und in neuern array speichern
+    //    Content verdoppeln und in neuern array speich    
     function inputCardList() {
         let select = document.getElementById("select");
         let selectedArray = select.value;
         let amount = parseInt(inputs[5].value);
         console.log("Kartendeck: " + selectedArray);
         for (let i = 1; i <= amount; i++) {
-            var content = select.value[0];
-            console.log(select.value[0]);
+            let content = Aufgabe04.decks[selectedArray].content[i];
             cardList.push(content);
             cardList.push(content);
+            let removed = Aufgabe04.decks[selectedArray].content.splice(0, 1);
         }
         console.log("Content CardList", cardList);
     }
-    //    Cards erzeugen 
+    //    Cards erzeug    
     function generateCards() {
-        var node = document.getElementById("spielfeld");
-        var childNodeHTML;
+        let select = document.getElementById("select");
+        let selectedArray = select.value;
+        let node = document.getElementById("spielfeld");
+        let childNodeHTML;
         let amount = parseInt(inputs[5].value);
-        var i = 0;
+        let i = 0;
         while (i < (amount * 2)) {
             let min = 0;
             let max = (cardList.length);
             // min = Math.ceil(min);
             //  max = Math.floor(max);
-            var random = Math.floor(Math.random() * (max - min)) + min;
+            let random = Math.floor(Math.random() * (max - min)) + min;
             console.log("Card:" + i);
             console.log(random);
-            childNodeHTML = "<div class='hidden' id='Karte" + i + "'>";
+            childNodeHTML = "<div class='hidden'>";
             childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
             console.log("Länge Cardlist nach Generate, " + cardList.length);
-            var removed = cardList.splice(random, 1);
+            let card = document.getElementsByClassName("hidden")[i];
+            card.classList.add(Aufgabe04.decks[selectedArray].cssClass);
+            let removed = cardList.splice(random, 1);
             console.log(cardList);
             addEventListener("click", clickHandler);
             i++;
@@ -134,5 +155,5 @@ var Aufgabe02;
             alert("Glückwunsch!");
         }
     }
-})(Aufgabe02 || (Aufgabe02 = {}));
+})(Aufgabe04 || (Aufgabe04 = {}));
 //# sourceMappingURL=Aufgabe04.js.map
