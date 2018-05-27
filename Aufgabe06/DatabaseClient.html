@@ -18,19 +18,16 @@ nicht kopiert und auch nicht diktiert.
 <script src="ProcessForm.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    	<form action="https://first05.herokuapp.com/" method="get">
-    
+	<form action="https://eiaapp.herokuapp.com/" method="get"></form>
 	<fieldset id="input">
 		<legend> Type student data here </legend>
 		<input type="text" name="name" placeholder="name"/>
 		<input type="text" name="firstname" placeholder="firstname"/>
 		<input type="text" name="matrikel" placeholder="matrikel"/>
-	    <select name="Select" id="select">
-			<option value="MIB">MIB</option>
-			<option value="MKB" selected>MKB</option>
+		<select name="studiengang"> 
+			<option value="MKB">MKB</option>
 			<option value="OMB">OMB</option>
-			<option value="SSB">SSB</option>
-			<option value="WNB">WNB</option>
+			<option value="MIB">MIB</option>
 		</select>
 		<input type="number" name="age" placeholder="age" min="1" max="120"/>
 		<input type="radio" name="gender" value="male" id="male"/>
@@ -38,21 +35,17 @@ nicht kopiert und auch nicht diktiert.
 		<input type="radio" name="gender" value="female" id="female"/>
 		<label for="female">Female</label>
 		<button type="button" id="insert">Insert to database</button>
-				
-		
 	</fieldset>
-	</form>
 	<fieldset id="output">
 		<legend> All student data </legend>
 		<button type="button" id="refresh">Refresh</button>
 		<textarea rows="20" cols="90"> </textarea>
 	</fieldset>
-	<fieldset id="search">
-		<legend> Search by matrikel </legend>
-		<input id="mtrNumber" type="text" name="mtrNumber" placeholder="matrikel"/>
-		<button type="button" id="searchbutton">Search</button>
-		<textarea rows="10" cols="90"> </textarea>
-	</fieldset>
-	
+	<fieldset id="checkSearch">
+		<legend> Search for student data </legend>
+		<input type="text" name="search" placeholder="matrikel"/>
+		<button type="button" id="checkSearch">Search</button>
+		<textarea rows="1" cols="90"> </textarea>
+</fieldset>
 </body>
 </html>
