@@ -1,7 +1,7 @@
 var L06_Interfaces;
 (function (L06_Interfaces) {
     window.addEventListener("load", init);
-    let address = "https://eiaapp.herokuapp.com";
+    let address = "https://first05.herokuapp.com";
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");

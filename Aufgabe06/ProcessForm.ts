@@ -1,6 +1,6 @@
 namespace L06_Interfaces {
     window.addEventListener("load", init);
-    let address: string = "https://eiaapp.herokuapp.com";
+    let address: string = "https://first05.herokuapp.com";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
