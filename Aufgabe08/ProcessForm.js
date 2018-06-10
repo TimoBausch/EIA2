@@ -1,70 +1,49 @@
-var L06_Interfaces;
-(function (L06_Interfaces) {
+//    window.addEventListener("load", init);
+//    let address: string = "https://first05.herokuapp.com";
+var DatabaseClient;
+(function (DatabaseClient) {
     window.addEventListener("load", init);
-    let address = "https://first05.herokuapp.com";
-    let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
-        let searchButton = document.getElementById("checkSearch");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        searchButton.addEventListener("click", search);
     }
     function insert(_event) {
-        let genderButton = document.getElementById("male");
-        let matrikel = inputs[2].value;
-        let studi;
-        studi = {
-            name: inputs[0].value,
-            firstname: inputs[1].value,
-            matrikel: parseInt(matrikel),
-            age: parseInt(inputs[3].value),
-            gender: genderButton.checked,
-            studiengang: document.getElementsByTagName("select").item(0).value
-        };
-        let convert = JSON.stringify(studi);
-        console.log(convert);
+        let inputs = document.getElementsByTagName("input");
+        let query = "command=insert";
+        query += "&name=" + inputs[0].value;
+        query += "&firstname=" + inputs[1].value;
+        query += "&matrikel=" + inputs[2].value;
+        console.log(query);
+        sendRequest(query, handleInsertResponse);
+    }
+    function refresh(_event) {
+        let query = "command=refresh";
+        sendRequest(query, handleFindResponse);
+    }
+    function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?command=insert&data=" + convert, true);
-        xhr.addEventListener("readystatechange", handleStateChangeInsert);
+        //        xhr.open("GET", "http://localhost:8100?" + _query, true);
+        xhr.open("GET", "https://first05.herokuapp.com/?" + _query, true);
+        xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
-    function handleStateChangeInsert(_event) {
-        var xhr = _event.target;
+    function handleInsertResponse(_event) {
+        let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             alert(xhr.response);
         }
     }
-    function refresh(_event) {
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?command=refresh", true);
-        xhr.addEventListener("readystatechange", handleStateChangeRefresh);
-        xhr.send();
-    }
-    function handleStateChangeRefresh(_event) {
-        let output = document.getElementsByTagName("textarea")[0];
-        output.value = "";
-        var xhr = _event.target;
+    function handleFindResponse(_event) {
+        let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            output.value += xhr.response;
+            let output = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            let responseAsJson = JSON.parse(xhr.response);
+            console.log(responseAsJson);
         }
     }
-    function search(_event) {
-        let mtrkl = inputs[6].value;
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
-        xhr.addEventListener("readystatechange", handleStateChangeSearch);
-        xhr.send();
-    }
-    function handleStateChangeSearch(_event) {
-        let output = document.getElementsByTagName("textarea")[1];
-        output.value = "";
-        var xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            output.value += xhr.response;
-        }
-    }
-})(L06_Interfaces || (L06_Interfaces = {}));
+})(DatabaseClient || (DatabaseClient = {}));
 //# sourceMappingURL=ProcessForm.js.map
