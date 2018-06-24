@@ -2,9 +2,9 @@ var Aufgabe10;
 (function (Aufgabe10) {
     class Bubble {
         move() {
-            this.y += -10;
-            if (this.y > 0) {
-                this.y = -450;
+            this.y += -2;
+            if (this.y < 0) {
+                this.y = 450;
             }
         }
         draw() {

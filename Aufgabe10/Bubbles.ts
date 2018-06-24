@@ -6,9 +6,9 @@ namespace Aufgabe10 {
         s: number;
 
         move(): void {
-            this.y += -10;
-            if (this.y > 0) {
-                this.y = -450;
+            this.y += -2;
+            if (this.y < 0) {
+                this.y = 450;
             }
         }
         draw(): void {

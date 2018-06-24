@@ -21,7 +21,7 @@ var Aufgabe10;
         drawSeagrass(280, 400, 0.8);
         drawSeagrass(0, 480, 4);
         imgData = Aufgabe10.crc2.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < n - 2; i++) {
+        for (let i = 0; i < (n * 2) - 2; i++) {
             let bubble = new Aufgabe10.Bubble();
             bubble.x = Math.random() * (80) + 60;
             bubble.y = 220 - (Math.random() * 260);
@@ -32,7 +32,7 @@ var Aufgabe10;
             let fish = new Aufgabe10.Fish();
             fish.x = Math.random() * Aufgabe10.crc2.canvas.width;
             fish.y = Math.random() * Aufgabe10.crc2.canvas.height;
-            fish.s = Math.random();
+            fish.s = Math.random() * 1.5;
             fishes.push(fish);
         }
         animate();
@@ -40,17 +40,28 @@ var Aufgabe10;
     function animate() {
         window.setTimeout(animate, 10);
         Aufgabe10.crc2.putImageData(imgData, 0, 0);
-        moveObjects();
-        drawObjects();
+        moveFishes();
+        drawFishes();
+        moveBubbles();
+        drawBubbles();
     }
-    function moveObjects() {
+    function moveFishes() {
         for (let i = 0; i < fishes.length; i++) {
             fishes[i].move();
         }
     }
-    function drawObjects() {
+    function drawFishes() {
         for (let i = 0; i < fishes.length; i++)
             fishes[i].draw();
+    }
+    function moveBubbles() {
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].move();
+        }
+    }
+    function drawBubbles() {
+        for (let i = 0; i < bubbles.length; i++)
+            bubbles[i].draw();
     }
     function drawSeagrass(_x, _y, _s) {
         Aufgabe10.crc2.beginPath();

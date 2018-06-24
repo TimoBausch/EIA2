@@ -2,9 +2,9 @@ var Aufgabe10;
 (function (Aufgabe10) {
     class Fish {
         move() {
-            this.x += 10;
-            if (this.x > 350) {
-                this.x = -60;
+            this.x += -2;
+            if (this.x < 0) {
+                this.x = 380;
             }
         }
         draw() {

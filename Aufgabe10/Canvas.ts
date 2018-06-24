@@ -26,18 +26,19 @@ namespace Aufgabe10 {
         drawSeagrass(0, 480, 4);
 
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < n - 2; i++) {
+        
+        for (let i: number = 0; i < (n*2) - 2; i++) {
             let bubble: Bubble = new Bubble();
             bubble.x = Math.random() * (80) + 60;
             bubble.y = 220 - (Math.random() * 260);
-            bubble.s = Math.random() * 10;
+            bubble.s = Math.random() *10;
             bubbles.push(bubble);
         }
         for (let i: number = 0; i < n; i++) {
             let fish: Fish = new Fish();
             fish.x = Math.random() * crc2.canvas.width;
             fish.y = Math.random() * crc2.canvas.height;
-            fish.s = Math.random();
+            fish.s = Math.random()*1.5;
 
             fishes.push(fish);
         }
@@ -55,19 +56,31 @@ namespace Aufgabe10 {
 
         crc2.putImageData(imgData, 0, 0);
 
-        moveObjects();
-        drawObjects();
+        moveFishes();
+        drawFishes();
+        moveBubbles();
+        drawBubbles();
     }
 
-    function moveObjects(): void {
+    function moveFishes(): void {
         for (let i: number = 0; i < fishes.length; i++) {
             fishes[i].move();
         }
     }
 
-    function drawObjects(): void {
+    function drawFishes(): void {
         for (let i: number = 0; i < fishes.length; i++)
             fishes[i].draw();
+    }
+     function moveBubbles(): void {
+        for (let i: number = 0; i < bubbles.length; i++) {
+            bubbles[i].move();
+        }
+    }
+
+    function drawBubbles(): void {
+        for (let i: number = 0; i < bubbles.length; i++)
+            bubbles[i].draw();
     }
 
     function drawSeagrass(_x: number, _y: number, _s: number): void {
