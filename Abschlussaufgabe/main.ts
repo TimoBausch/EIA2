@@ -41,7 +41,7 @@ namespace Abschlussaufgabe {
             window.removeEventListener('touchstart', test, false);
         }, false);
         Line.addEventListener("click", function() { modeChange("Line") });
-        Line.addEventListener("touchstart", function() { modeChange("Line") });
+        Line.addEventListener("touchmove",  test );
         Circle.addEventListener("click", function() { modeChange("Circle") });
         Circle.addEventListener("touchstart", function() { modeChange("Circle") });
         Rect.addEventListener("click", function() { modeChange("Rect") });
