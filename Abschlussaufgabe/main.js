@@ -2,6 +2,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
     let modeChoosed = false;
+    let cleared = true;
     let points = [];
     let objects = [];
     let mode;
@@ -19,12 +20,19 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         console.log(Abschlussaufgabe.crc2);
         canvas.addEventListener("click", Pointer);
+        canvas.addEventListener("touchstart", Pointer);
         Line.addEventListener("click", function () { modeChange("Line"); });
+        Line.addEventListener("touchstart", function () { modeChange("Line"); });
         Circle.addEventListener("click", function () { modeChange("Circle"); });
+        Circle.addEventListener("touchstart", function () { modeChange("Circle"); });
         Rect.addEventListener("click", function () { modeChange("Rect"); });
+        Rect.addEventListener("touchstart", function () { modeChange("Rect"); });
         clearBox.addEventListener("click", clear);
+        clearBox.addEventListener("touchstart", clear);
         retourBox.addEventListener("click", retour);
+        retourBox.addEventListener("touchstart", retour);
         animateBox.addEventListener("click", animate);
+        animateBox.addEventListener("touchstart", animate);
         function modeChange(_mode) {
             let choosenBox = document.getElementById(_mode);
             mode = _mode;
@@ -37,6 +45,7 @@ var Abschlussaufgabe;
         }
     }
     function Pointer(_event) {
+        cleared = true;
         if (modeChoosed) {
             let x = _event.pageX;
             let y = _event.pageY;
@@ -114,17 +123,20 @@ var Abschlussaufgabe;
     }
     function clear() {
         console.log("clear all");
+        cleared = false;
         Abschlussaufgabe.crc2.clearRect(0, 0, 1280, 620);
         points = [];
         objects = [];
     }
     function animate() {
         console.log("ANIMATE");
-        window.setTimeout(animate, 10);
-        for (let i = 0; i < objects.length; i++) {
-            objects[i].move();
+        if (cleared) {
+            window.setTimeout(animate, 10);
+            for (let i = 0; i < objects.length; i++) {
+                objects[i].move();
+            }
+            drawObjects();
         }
-        drawObjects();
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=main.js.map

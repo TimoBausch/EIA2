@@ -1,16 +1,17 @@
 namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
-      let modeChoosed : boolean = false;
+    let modeChoosed: boolean = false;
+    let cleared: boolean = true;
 
 
 
     let points: Objects[] = [];
     let objects: Objects[] = [];
     let mode: string;
-    
-    
-    
+
+
+
 
 
     let coordinates: number[] = [];
@@ -19,7 +20,7 @@ namespace Abschlussaufgabe {
 
 
     function init(_event: Event): void {
-      
+
         console.log(modeChoosed);
         let boxes: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -28,89 +29,98 @@ namespace Abschlussaufgabe {
         let Rect: HTMLDivElement = document.getElementsByTagName("div")[2];
         let retourBox: HTMLDivElement = document.getElementsByTagName("div")[3];
         let clearBox: HTMLDivElement = document.getElementsByTagName("div")[4];
-         let animateBox: HTMLDivElement = document.getElementsByTagName("div")[5];
-        
+        let animateBox: HTMLDivElement = document.getElementsByTagName("div")[5];
+
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
 
 
         canvas.addEventListener("click", Pointer);
+        canvas.addEventListener("touchstart", Pointer);
         Line.addEventListener("click", function() { modeChange("Line") });
+        Line.addEventListener("touchstart", function() { modeChange("Line") });
         Circle.addEventListener("click", function() { modeChange("Circle") });
+        Circle.addEventListener("touchstart", function() { modeChange("Circle") });
         Rect.addEventListener("click", function() { modeChange("Rect") });
+        Rect.addEventListener("touchstart", function() { modeChange("Rect") });
         clearBox.addEventListener("click", clear);
+        clearBox.addEventListener("touchstart", clear);
         retourBox.addEventListener("click", retour);
+        retourBox.addEventListener("touchstart", retour);
         animateBox.addEventListener("click", animate);
+        animateBox.addEventListener("touchstart", animate);
 
         function modeChange(_mode: string): void {
             let choosenBox: HTMLDivElement = <HTMLDivElement>document.getElementById(_mode);
             mode = _mode;
-            
-            modeChoosed=true;
+
+            modeChoosed = true;
             console.log(modeChoosed);
-            
+
             for (let i: number = 0; i < boxes.length; i++) {
                 boxes[i].classList.remove("active");
             }
             choosenBox.classList.add("active");
         }
-        
-       
-            
-        
-            
+
+
+
+
+
     }
 
 
 
 
     function Pointer(_event: MouseEvent): void {
-         if (modeChoosed){
+        cleared = true;
+        if (modeChoosed) {
 
-        let x: number = _event.pageX
-        let y: number = _event.pageY;
+            let x: number = _event.pageX
+            let y: number = _event.pageY;
 
-        coordinates.push(x);
-        coordinates.push(y);
-        console.log("point to", x, y);
+            coordinates.push(x);
+            coordinates.push(y);
+            console.log("point to", x, y);
 
-        let point: PointCircle = new PointCircle(x, y, 0, 0);
+            let point: PointCircle = new PointCircle(x, y, 0, 0);
 
-        points.push(point);
-        drawpoints()
+            points.push(point);
+            drawpoints()
 
 
-        if (points.length > 1) {
+            if (points.length > 1) {
 
-            switch (mode) {
+                switch (mode) {
 
-                case "Line": {
-                    console.log("Mode: Line");
-                    points = [];
-                    drawLine();
-                    break;
-                }
-                case "Circle": {
-                    console.log("Mode: Circle");
-                    points = [];
-                    drawCircle();
-                    break;
-                }
-                case "Rect": {
-                    console.log("Mode: Rect");
-                    points = [];
-                    drawRect();
-                    break;
-                }
-                default: {
-                    console.log("no choice");
-                    break;
+                    case "Line": {
+                        console.log("Mode: Line");
+                        points = [];
+                        drawLine();
+                        break;
+                    }
+                    case "Circle": {
+                        console.log("Mode: Circle");
+                        points = [];
+                        drawCircle();
+                        break;
+                    }
+                    case "Rect": {
+                        console.log("Mode: Rect");
+                        points = [];
+                        drawRect();
+                        break;
+                    }
+                    default: {
+                        console.log("no choice");
+                        break;
+                    }
                 }
             }
         }
     }
-        }
+
 
 
 
@@ -193,6 +203,7 @@ namespace Abschlussaufgabe {
 
     function clear(): void {
         console.log("clear all");
+        cleared = false;
         crc2.clearRect(0, 0, 1280, 620);
         points = [];
         objects = [];
@@ -200,15 +211,15 @@ namespace Abschlussaufgabe {
 
 
     }
-    function animate() : void{
+    function animate(): void {
         console.log("ANIMATE");
-         window.setTimeout(animate, 10);
-           for (let i: number = 0; i < objects.length; i++) {
-            objects[i].move();
+        if (cleared) {
+            window.setTimeout(animate, 10);
+            for (let i: number = 0; i < objects.length; i++) {
+                objects[i].move();
+            }
+            drawObjects();
         }
-        drawObjects();
-
     }
-
 
 }
