@@ -20,7 +20,9 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         console.log(Abschlussaufgabe.crc2);
         canvas.addEventListener("click", Pointer);
-        canvas.addEventListener("touchstart", Pointer);
+        canvas.addEventListener("touchstart", function test() {
+            window.removeEventListener('touchstart', test, false);
+        }, false);
         Line.addEventListener("click", function () { modeChange("Line"); });
         Line.addEventListener("touchstart", function () { modeChange("Line"); });
         Circle.addEventListener("click", function () { modeChange("Circle"); });
@@ -42,6 +44,10 @@ var Abschlussaufgabe;
                 boxes[i].classList.remove("active");
             }
             choosenBox.classList.add("active");
+        }
+        function test() {
+            Abschlussaufgabe.crc2.fillStyle = "rgb(245,222,179)";
+            Abschlussaufgabe.crc2.fillRect(0, 480, 320, -100);
         }
     }
     function Pointer(_event) {

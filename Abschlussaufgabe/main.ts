@@ -37,7 +37,9 @@ namespace Abschlussaufgabe {
 
 
         canvas.addEventListener("click", Pointer);
-        canvas.addEventListener("touchstart", Pointer);
+        canvas.addEventListener("touchstart", function test() {
+            window.removeEventListener('touchstart', test, false);
+        }, false);
         Line.addEventListener("click", function() { modeChange("Line") });
         Line.addEventListener("touchstart", function() { modeChange("Line") });
         Circle.addEventListener("click", function() { modeChange("Circle") });
@@ -65,11 +67,14 @@ namespace Abschlussaufgabe {
         }
 
 
+        function test(): void {
+            crc2.fillStyle = "rgb(245,222,179)";
+            crc2.fillRect(0, 480, 320, -100);
+        }
 
 
 
     }
-
 
 
 
