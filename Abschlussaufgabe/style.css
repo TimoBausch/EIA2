@@ -1,0 +1,76 @@
+body {
+	margin:4px;
+	padding:0;
+	top:0;
+	left:0;
+}
+
+.box {
+	float: left;
+	width: 33%;
+	height: auto;
+	text-align: center;
+	border: 1px solid black;
+	
+}
+
+.box:hover {
+	background-color: lightgrey;
+}
+
+
+canvas {
+	border: 1px dotted black;
+}
+
+
+#clearbox{
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	float:left;
+	border: solid 1px black;
+	font-size: 1.2em;
+	clear:float;
+	
+}
+
+#clearbox:hover		{
+	background-color: lightgrey;
+}
+
+#retourbox{
+	position: absolute;
+	top: 15px;
+	left: 80px;
+	float:left;
+	border: solid 1px black;
+	font-size: 1.2em;
+	clear:float;
+	
+}
+
+#retourbox:hover{
+	background-color: lightgrey;
+}
+
+#animatebox{
+	position: absolute;
+	top: 15px;
+	left: 150px;
+	float:left;
+	border: solid 1px black;
+	font-size: 1.2em;
+	clear:float;
+	
+}
+
+#animatebox:hover{
+	background-color: lightgrey;
+}
+
+.active{
+	background-color: lightgrey;
+	
+	
+}
