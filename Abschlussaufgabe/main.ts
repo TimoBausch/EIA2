@@ -24,15 +24,19 @@ namespace Abschlussaufgabe {
         console.log(modeChoosed);
         let boxes: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-        let Line: HTMLDivElement = document.getElementsByTagName("div")[0];
-        let Circle: HTMLDivElement = document.getElementsByTagName("div")[1];
-        let Rect: HTMLDivElement = document.getElementsByTagName("div")[2];
-        let retourBox: HTMLDivElement = document.getElementsByTagName("div")[3];
-        let clearBox: HTMLDivElement = document.getElementsByTagName("div")[4];
-        let animateBox: HTMLDivElement = document.getElementsByTagName("div")[5];
+        let Line: HTMLDivElement = document.getElementsByTagName("div")[4];
+        let Circle: HTMLDivElement = document.getElementsByTagName("div")[5];
+        let Rect: HTMLDivElement = document.getElementsByTagName("div")[6];
+        let retourBox: HTMLDivElement = document.getElementsByTagName("div")[1];
+        let clearBox: HTMLDivElement = document.getElementsByTagName("div")[2];
+        let animateBox: HTMLDivElement = document.getElementsByTagName("div")[3];
 
         crc2 = canvas.getContext("2d");
         console.log(crc2);
+
+        let logo: Logo = new Logo(280, 255, 100, 100)
+        logo.draw();
+
 
 
 
@@ -40,8 +44,9 @@ namespace Abschlussaufgabe {
         canvas.addEventListener("touchstart", function test() {
             window.removeEventListener('touchstart', test, false);
         }, false);
+
         Line.addEventListener("click", function() { modeChange("Line") });
-        Line.addEventListener("touchmove",  test );
+        Line.addEventListener("touchmove", test);
         Circle.addEventListener("click", function() { modeChange("Circle") });
         Circle.addEventListener("touchstart", function() { modeChange("Circle") });
         Rect.addEventListener("click", function() { modeChange("Rect") });
@@ -56,6 +61,11 @@ namespace Abschlussaufgabe {
         function modeChange(_mode: string): void {
             let choosenBox: HTMLDivElement = <HTMLDivElement>document.getElementById(_mode);
             mode = _mode;
+
+
+            choosenBox.classList.add("active");
+
+
 
             modeChoosed = true;
             console.log(modeChoosed);
@@ -125,21 +135,6 @@ namespace Abschlussaufgabe {
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     function drawLine(): void {

@@ -1,76 +1,99 @@
 body {
-	margin:4px;
-	padding:0;
-	top:0;
-	left:0;
+	margin: 4px;
+	padding: 0;
+	top: 0;
+	left: 0;
+	font-family: 'Arial'
+}
+
+canvas {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: -10;
+	border: 2px dotted black;
+}
+
+#controllcenter {
+	position: absolute;
+	top: 10px;
+	left: 10px;
 }
 
 .box {
-	float: left;
-	width: 33%;
-	height: auto;
+	font-size: 1.2em; width : 100px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin: 6px;
 	text-align: center;
-	border: 1px solid black;
-	
+	border: 0px solid black;
+	border-radius: 10px;
+	background-color: lightgrey;
+	width: 100px;
 }
 
 .box:hover {
-	background-color: lightgrey;
+	background-color: dimgrey;
 }
 
 
-canvas {
-	border: 1px dotted black;
-}
-
-
-#clearbox{
-	position: absolute;
+#clearbox {
+	/*position: absolute;
 	top: 15px;
 	left: 15px;
-	float:left;
-	border: solid 1px black;
-	font-size: 1.2em;
-	clear:float;
-	
-}
+	float:left;*/
+	width: 100px;
+	margin: 6px;
+	text-align: center;
 
-#clearbox:hover		{
+	border-radius: 5px;
+	font-size: 1.2em;
+	clear: float;
 	background-color: lightgrey;
 }
 
-#retourbox{
-	position: absolute;
+#clearbox:hover {
+	background-color: dimgrey;
+}
+
+#retourbox {
+	/*position: absolute;
 	top: 15px;
 	left: 80px;
-	float:left;
-	border: solid 1px black;
+	float:left;*/
+	width: 100px;
+	margin: 6px;	
+	text-align: center;
+	border-radius: 5px;
 	font-size: 1.2em;
-	clear:float;
-	
-}
-
-#retourbox:hover{
+	clear: float;
 	background-color: lightgrey;
 }
 
-#animatebox{
-	position: absolute;
+#retourbox:hover {
+	background-color: dimgrey;
+}
+
+#animatebox {
+	/*position: absolute;
 	top: 15px;
 	left: 150px;
-	float:left;
-	border: solid 1px black;
+	float:left;*/
+	width: 100px;
+	margin: 6px;
+	margin-bottom: 150px;
+	text-align: center;
+
+	border-radius: 5px;
 	font-size: 1.2em;
-	clear:float;
-	
-}
-
-#animatebox:hover{
+	clear: float;
 	background-color: lightgrey;
 }
 
-.active{
-	background-color: lightgrey;
-	
-	
+#animatebox:hover {
+	background-color: dimgrey;
+}
+
+.active {
+	background-color: dimgrey;
 }

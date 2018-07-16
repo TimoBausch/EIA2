@@ -11,14 +11,16 @@ var Abschlussaufgabe;
         console.log(modeChoosed);
         let boxes = document.getElementsByTagName("div");
         let canvas = document.getElementsByTagName("canvas")[0];
-        let Line = document.getElementsByTagName("div")[0];
-        let Circle = document.getElementsByTagName("div")[1];
-        let Rect = document.getElementsByTagName("div")[2];
-        let retourBox = document.getElementsByTagName("div")[3];
-        let clearBox = document.getElementsByTagName("div")[4];
-        let animateBox = document.getElementsByTagName("div")[5];
+        let Line = document.getElementsByTagName("div")[4];
+        let Circle = document.getElementsByTagName("div")[5];
+        let Rect = document.getElementsByTagName("div")[6];
+        let retourBox = document.getElementsByTagName("div")[1];
+        let clearBox = document.getElementsByTagName("div")[2];
+        let animateBox = document.getElementsByTagName("div")[3];
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         console.log(Abschlussaufgabe.crc2);
+        let logo = new Abschlussaufgabe.Logo(280, 255, 100, 100);
+        logo.draw();
         canvas.addEventListener("click", Pointer);
         canvas.addEventListener("touchstart", function test() {
             window.removeEventListener('touchstart', test, false);
@@ -38,6 +40,7 @@ var Abschlussaufgabe;
         function modeChange(_mode) {
             let choosenBox = document.getElementById(_mode);
             mode = _mode;
+            choosenBox.classList.add("active");
             modeChoosed = true;
             console.log(modeChoosed);
             for (let i = 0; i < boxes.length; i++) {
