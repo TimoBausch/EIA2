@@ -46,17 +46,11 @@ namespace Abschlussaufgabe {
         }, false);
 
         Line.addEventListener("click", function() { modeChange("Line") });
-        Line.addEventListener("touchmove", test);
         Circle.addEventListener("click", function() { modeChange("Circle") });
-        Circle.addEventListener("touchstart", function() { modeChange("Circle") });
         Rect.addEventListener("click", function() { modeChange("Rect") });
-        Rect.addEventListener("touchstart", function() { modeChange("Rect") });
         clearBox.addEventListener("click", clear);
-        clearBox.addEventListener("touchstart", clear);
         retourBox.addEventListener("click", retour);
-        retourBox.addEventListener("touchstart", retour);
         animateBox.addEventListener("click", animate);
-        animateBox.addEventListener("touchstart", animate);
 
         function modeChange(_mode: string): void {
             let choosenBox: HTMLDivElement = <HTMLDivElement>document.getElementById(_mode);
@@ -219,6 +213,7 @@ namespace Abschlussaufgabe {
                 objects[i].move();
             }
             drawObjects();
+           
         }
     }
 
